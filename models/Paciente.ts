@@ -1,0 +1,51 @@
+import { Schema, model } from 'mongoose';
+
+const pacienteSchema = new Schema(
+  {
+    no: Number,
+    cedula: String,
+    nombreCompleto: String,
+    fechaNacimiento: Date,
+    edad: Number,
+    sexo: String,
+    sector: String,
+    celular: String,
+    ars: String,
+    antFam: String,
+    antPatPer: String,
+    alergias: String,
+    medicamentos: String,
+    toxicos: String,
+    quirurgicos: String,
+    habitoToxicoActual: String,
+    signosSintomas: String,
+    ta: String,
+    fc: String,
+    fr: String,
+    talla: String,
+    peso: String,
+    aspectoGeneral: String,
+    cabeza: String,
+    cuello: String,
+    toraxPulmones: String,
+    corazon: String,
+    abdomen: String,
+    pielAnexos: String,
+    extremidades: String,
+    genitales: String,
+    neurologico: String,
+    laboratorio: String,
+    imagenes: String,
+    estudios: String,
+    dieta: String,
+    medicamentos2: String,
+    diagnosticos: String,
+    tratamientos: String,
+  },
+  {
+    timestamps: true,
+    versionKey: false,
+  }
+);
+
+export default model('paciente', pacienteSchema);
