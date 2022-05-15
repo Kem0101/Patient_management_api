@@ -3,9 +3,25 @@ import Paciente from '../models/Paciente';
 
 const router = Router();
 
-router.get('/Get', async (req, res) => {
-  const pacientes = await Paciente.find();
-  res.json(pacientes);
+router.get('/Get/:page?', async (req: any, res) => {
+  const { page = 1, limit = 10 } = req.params;
+
+  try {
+    const pacientes = await Paciente.find()
+      .limit(limit * 1)
+      .skip((page - 1) * limit)
+      .exec();
+
+    const count = await Paciente.countDocuments();
+
+    res.json({
+      page: page,
+      totalPages: Math.ceil(count / limit),
+      pacientes,
+    });
+  } catch (err) {
+    console.error(err);
+  }
 });
 
 router.post('/Save', async (req, res) => {
